@@ -26,5 +26,5 @@ Listen on a [UNIX-domain](https://www.freebsd.org/cgi/man.cgi?query=unix) socket
 ### Request
 
 ```
-% curl --location 'http://localhost:80/ocr' --header 'Content-Type: text/plain' --data '@/path/to/file.jpg'
+% curl --location 'http://localhost:80/ocr' --header 'Content-Type: text/plain' --data '@/path/to/file'
 ```

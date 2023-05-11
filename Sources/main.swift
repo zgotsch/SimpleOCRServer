@@ -68,21 +68,10 @@ struct SimpleObservation: Codable {
 }
 
 func dataToCGImage(data: Data) -> CGImage? {
-  guard let dataProvider = CGDataProvider(data: data as CFData) else {
-    print("Failed to create CGDataProvider")
+  guard let imageSource = CGImageSourceCreateWithData(data as CFData, nil) else {
     return nil
   }
-
-  guard
-    let cgImage = CGImage(
-      jpegDataProviderSource: dataProvider, decode: nil, shouldInterpolate: true,
-      intent: .defaultIntent)
-  else {
-    print("Failed to create CGImage")
-    return nil
-  }
-
-  return cgImage
+  return CGImageSourceCreateImageAtIndex(imageSource, 0, nil)
 }
 
 func makeServer(from args: [String] = Swift.CommandLine.arguments) -> HTTPServer {
